@@ -272,7 +272,7 @@ public class DataManager extends javax.swing.JFrame implements FileIO
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // Read values from GUIT and save them variables
         String id = txtID.getText();
-        String fistyName = txtFirstName.getText();
+        String firstName = txtFirstName.getText();
         String lastName = txtLastName.getText();
         String major = txtMajor.getText();
         String department = txtDepartment.getText();
@@ -283,12 +283,12 @@ public class DataManager extends javax.swing.JFrame implements FileIO
                 {
                     if(radioStudent.isSelected())
                     {
-                        Student s1 = new Student();
+                        Student s1 = new Student(Integer.parseInt(id), firstName, lastName, major);
                         personList.add(s1);
                     }
                     else if(radioEmployee.isSelected())
                     {
-                        Employee e1 = new Employee();
+                        Employee e1 = new Employee(Integer.parseInt(id), firstName, lastName, department);
                         personList.add(e1);
                     }
                 }    
@@ -358,8 +358,16 @@ public class DataManager extends javax.swing.JFrame implements FileIO
             sort = OrderBy.DEPARTMENT;
         }
 		
+        //loop
+        
+        for(int i= 0; i < personList.size(); i++)
+        {
+            personList.get(i).setOrder(sort);
+        } 
+        
         // Sort the list by calling Collections.sort(personList);
-	personList.getFirst().setOrder(sort);
+	//personList.getFirst().setOrder(sort);
+        
         Collections.sort(personList);
         
         
@@ -460,7 +468,7 @@ public class DataManager extends javax.swing.JFrame implements FileIO
             else if(p1 instanceof Employee)
             {
                 Employee e2 = (Employee)p1;
-                pw.println(e2.toSting());
+                pw.println(e2.toString());
             }
             
         }

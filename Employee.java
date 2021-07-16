@@ -31,7 +31,7 @@ public class Employee extends Person implements FileIO
         m_department = department;
     }
     
-    public String toSting()
+    public String toString()
     {
         return m_personType + "\t" 
              + m_ID + "\t" 
@@ -95,7 +95,7 @@ public class Employee extends Person implements FileIO
         java.io.File file1 = new java.io.File(a_fileName);
         java.io.PrintWriter printwriter = new java.io.PrintWriter(file1);
         
-        printwriter.print(this.toSting());
+        printwriter.print(this.toString());
         printwriter.close();
     }
 
@@ -113,7 +113,7 @@ public class Employee extends Person implements FileIO
         Employee e2 = new Employee(103, "Lily", "Green", "SALES");
         
         System.out.println(e1.compareTo(e2));   
-        System.out.println(e2.toSting());
+        System.out.println(e2.toString());
         System.out.println(e1);
     }
     
